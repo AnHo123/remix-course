@@ -1,0 +1,7 @@
+.btn {
+  background: linear-gradient(180deg, #99d9e8 0%, #45a8be 40%, #0090af 100%);
+
+  &:hover {
+    background: #0090af;
+  }
+}

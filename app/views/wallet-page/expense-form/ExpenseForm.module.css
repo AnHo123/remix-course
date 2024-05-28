@@ -1,0 +1,7 @@
+.input {
+  padding: 1rem 1.5rem;
+  border: 1px solid theme("colors.primary");
+  border-radius: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
