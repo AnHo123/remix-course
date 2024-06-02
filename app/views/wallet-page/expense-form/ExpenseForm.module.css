@@ -5,3 +5,11 @@
   cursor: pointer;
   width: 100%;
 }
+
+.btn-cancel {
+  background: theme("colors.red.500");
+
+  &:hover {
+    background: theme("colors.red.400");
+  }
+}

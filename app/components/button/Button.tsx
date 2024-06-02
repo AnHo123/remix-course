@@ -16,8 +16,7 @@ export default function Button({
     <button
       {...buttonProps}
       className={twMerge(
-        styles["btn"],
-        "text-white rounded-xl px-5 text-xl py-3",
+        "bg-accent-blue hover:bg-[#45a8be] text-white rounded-xl px-5 text-xl py-3",
         className
       )}
     >

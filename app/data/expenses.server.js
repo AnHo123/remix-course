@@ -29,3 +29,43 @@ export async function getExpenses() {
     throw error;
   }
 }
+
+export async function getExpense(id) {
+  try {
+    const expense = await prisma.expense.findFirst({
+      where: { id },
+    });
+    return expense;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function updateExpense(id, expenseData) {
+  try {
+    return await prisma.expense.update({
+      where: { id },
+      data: {
+        title: expenseData.title,
+        amount: +expenseData.amount,
+        note: expenseData.note,
+        date: new Date(expenseData.date),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function deleteExpense(id) {
+  try {
+    return await prisma.expense.delete({
+      where: { id },
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

@@ -1,6 +1,14 @@
-import { Form, useActionData, useNavigation } from "@remix-run/react";
+import {
+  Form,
+  Link,
+  useActionData,
+  useLoaderData,
+  useNavigation,
+} from "@remix-run/react";
 import styles from "./ExpenseForm.module.css";
 import Button from "~/components/button/Button";
+import { useRef } from "react";
+import { ExpenseDataType } from "../expense-item/ExpenseItem";
 
 interface ValidationDataType {
   title?: string;
@@ -8,17 +16,36 @@ interface ValidationDataType {
   date?: string;
 }
 
-export default function ExpenseForm() {
+interface ExpenseFormProps {}
+
+export default function ExpenseForm(props: ExpenseFormProps) {
   const validationErrors = useActionData() as ValidationDataType;
+  const expenseData = useLoaderData() as ExpenseDataType;
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== "idle";
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const defaultValues = expenseData
+    ? {
+        title: expenseData?.title,
+        amount: expenseData?.amount,
+        date: expenseData?.date?.slice(0, 10),
+        note: expenseData?.note,
+      }
+    : {
+        title: "",
+        amount: "",
+        date: "",
+        note: "",
+      };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center border-2 rounded-xl border-primary max-w-[30rem] py-8 px-10">
+    <div className="w-full flex flex-col justify-center items-center border-2 rounded-xl bg-white border-primary max-w-[30rem] py-8 px-10">
       <div className="font-bold text-dark-grey text-2xl mb-5">ADD EXPENSE</div>
       <Form
+        ref={formRef}
         className="w-full flex flex-col justify-center items-end"
-        method="post"
+        method={expenseData ? "patch" : "post"}
       >
         <div className="flex flex-col gap-5 w-full text-lg mb-8">
           <div className="w-full">
@@ -32,6 +59,7 @@ export default function ExpenseForm() {
                 placeholder="Enter your expense title"
                 minLength={1}
                 maxLength={30}
+                defaultValue={defaultValues.title}
               />
               {validationErrors?.title && (
                 <div className="text-red-500 font-bold text-sm">
@@ -50,6 +78,7 @@ export default function ExpenseForm() {
               min="0"
               step="0.01"
               placeholder="Enter your expense value"
+              defaultValue={defaultValues.amount}
             />
             {validationErrors?.amount && (
               <div className="text-red-500 font-bold text-sm">
@@ -62,9 +91,11 @@ export default function ExpenseForm() {
               className={styles["input"]}
               type="date"
               required
+              max={new Date().toISOString().slice(0, 10)}
               id="date"
               name="date"
               placeholder="Enter your expense date"
+              defaultValue={defaultValues.date}
             />
             {validationErrors?.date && (
               <div className="text-red-500 font-bold text-sm">
@@ -81,12 +112,23 @@ export default function ExpenseForm() {
               placeholder="Enter your expense note"
               minLength={1}
               maxLength={50}
+              defaultValue={defaultValues.note}
             />
           </div>
         </div>
-        <Button type="submit" className="rounded-xl px-5 text-xl py-3 self-end">
-          {isSubmitting ? "Submiting..." : " Add Expense"}
-        </Button>
+        <div className="seft-end flex gap-3">
+          <Link to="/wallet">
+            <Button
+              disabled={isSubmitting}
+              className={`rounded-xl px-5 text-xl py-3 ${styles["btn-cancel"]}`}
+            >
+              Cancel
+            </Button>
+          </Link>
+          <Button type="submit" className="rounded-xl px-5 text-xl py-3">
+            {isSubmitting ? "Submiting..." : "Save"}
+          </Button>
+        </div>
       </Form>
     </div>
   );

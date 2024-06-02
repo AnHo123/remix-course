@@ -1,26 +1,16 @@
 import WalletPage from "~/views/wallet-page/WalletPage";
-import { addExpense, getExpenses } from "~/data/expenses.server";
-import { validateExpenseInput } from "~/data/validation.server";
-import { redirect } from "@remix-run/node";
+import { getExpenses } from "~/data/expenses.server";
+import { Outlet } from "@remix-run/react";
 
 export default function Index() {
-  return <WalletPage />;
-}
-
-export async function action({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const expenseData = Object.fromEntries(formData);
-
-  console.log(expenseData);
-
-  try {
-    validateExpenseInput(expenseData);
-  } catch (error) {
-    return error;
-  }
-
-  await addExpense(expenseData);
-  return redirect("/wallet");
+  return (
+    <>
+      <Outlet />
+      <main>
+        <WalletPage />
+      </main>
+    </>
+  );
 }
 
 export async function loader() {

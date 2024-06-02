@@ -1,8 +1,10 @@
+import { Form, Link } from "@remix-run/react";
 import Button from "~/components/button/Button";
 import BinIcon from "~/images/bin.svg";
 import PencilIcon from "~/images/pencil.svg";
 
 export interface ExpenseDataType {
+  id: string;
   title: string;
   amount: number;
   note?: string;
@@ -17,14 +19,18 @@ export default function ExpenseItem({ data }: ExpensePropsDataType) {
   const date = new Date(data?.date).toLocaleDateString();
 
   return (
-    <div className="border-2 min-w-80 border-primary rounded-3xl pb-6 pt-8 px-6 w-full max-w-md relative">
-      <div className="absolute top-2 right-4 flex items-center justify-end gap-2">
-        <Button className="p-2.5 rounded-md">
-          <img src={BinIcon} alt="bin icon" className="w-4 h-auto" />
-        </Button>
-        <Button className="p-2.5 rounded-md">
-          <img src={PencilIcon} alt="bin icon" className="w-4 h-auto" />
-        </Button>
+    <div className="border-2 min-w-80 border-primary h-full rounded-3xl pt-2 pb-6 pr-2 pl-6 w-full max-w-md">
+      <div className="flex items-center justify-end gap-2 mb-2">
+        <Form method="delete" action={`/wallet/${data.id}`}>
+          <Button className="p-2.5 rounded-md">
+            <img src={BinIcon} alt="bin icon" className="w-4 h-auto" />
+          </Button>
+        </Form>
+        <Link to={`/wallet/${data.id}`}>
+          <Button className="p-2.5 rounded-md">
+            <img src={PencilIcon} alt="bin icon" className="w-4 h-auto" />
+          </Button>
+        </Link>
       </div>
       <div className="font-bold text-2xl text-primary capitalize text-center mb-2">
         {data?.title}
