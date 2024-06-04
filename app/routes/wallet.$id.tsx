@@ -25,7 +25,7 @@ export async function action({ params, request }: any) {
 
   if (request.method === "DELETE") {
     await deleteExpense(expenseId);
-    return redirect("/wallet");
+    return { deleteId: expenseId };
   }
 
   if (request.method === "PATCH") {
