@@ -1,8 +1,10 @@
-import { NavLink } from "@remix-run/react";
+import { Form, Link, NavLink, useLoaderData } from "@remix-run/react";
 import Logo from "../../images/Logo.png";
 import Button from "../button/Button";
 
 export default function Header() {
+  const userId = useLoaderData();
+
   return (
     <header className="bg-light-blue font-bold w-full text-primary flex py-5 items-center justify-evenly">
       <NavLink to="/">
@@ -13,7 +15,17 @@ export default function Header() {
         <NavLink to="analyse">Analyse</NavLink>
         <NavLink to="wallet">Wallet</NavLink>
       </div>
-      <Button className="min-w-32">Login</Button>
+      {userId ? (
+        <Form method="post" action="/logout" id="logout-form">
+          <Button className="min-w-32" type="submit">
+            Logout
+          </Button>
+        </Form>
+      ) : (
+        <Link to="/auth?mode=login">
+          <Button className="min-w-32">Login</Button>
+        </Link>
+      )}
     </header>
   );
 }

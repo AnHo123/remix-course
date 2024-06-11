@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { getUserFromSession } from "~/data/auth.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,3 +15,8 @@ export default function Index() {
     </div>
   );
 }
+
+export const loader = async () => {
+  const userId = await getUserFromSession();
+  return { userId };
+};
