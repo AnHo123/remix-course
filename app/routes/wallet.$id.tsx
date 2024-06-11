@@ -1,4 +1,5 @@
-import { redirect } from "@remix-run/node";
+import { LoaderFunctionArgs, redirect } from "@remix-run/node";
+import { requireUserSection } from "~/data/auth.server";
 import {
   deleteExpense,
   getExpense,
@@ -11,14 +12,15 @@ export default function ExpenseItem() {
   return <ExpenseFormModal />;
 }
 
-export async function loader({ params }: any) {
+export async function loader({ params, request }: LoaderFunctionArgs) {
+  await requireUserSection(request);
   const expenseId = params.id;
   const expense = await getExpense(expenseId);
 
   return expense;
 }
 
-export async function action({ params, request }: any) {
+export async function action({ params, request }: LoaderFunctionArgs) {
   const expenseId = params.id;
   const formData = await request.formData();
   const expenseData = Object.fromEntries(formData);

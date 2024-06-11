@@ -2,6 +2,7 @@ import WalletPage from "~/views/wallet-page/WalletPage";
 import { getExpenses } from "~/data/expenses.server";
 import { Outlet } from "@remix-run/react";
 import { getUserFromSession } from "~/data/auth.server";
+import { LoaderFunctionArgs } from "@remix-run/node";
 
 export default function Index() {
   return (
@@ -14,7 +15,7 @@ export default function Index() {
   );
 }
 
-export async function loader({ request }: any) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const [expenses, userId] = await Promise.all([
     getExpenses(),
     getUserFromSession(request),

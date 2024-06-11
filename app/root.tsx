@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
 import styles from "./global.css?url";
 import Header from "./components/header/Header";
@@ -53,6 +53,6 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader({ request }: any) {
+export async function loader({ request }: LoaderFunctionArgs) {
   return getUserFromSession(request);
 }
