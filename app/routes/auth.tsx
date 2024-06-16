@@ -15,6 +15,7 @@ export default function AuthPage() {
 export async function action({ request }: ActionFunctionArgs) {
   const searchParams = new URL(request.url).searchParams;
   const authMode = searchParams.get("mode") || "login";
+  const redirectPath = searchParams.get("redirectPath") || "/";
 
   const formData = await request.formData();
 
@@ -31,9 +32,9 @@ export async function action({ request }: ActionFunctionArgs) {
 
   try {
     if (authMode === "login") {
-      return await login(credentials);
+      return await login({ ...credentials, redirectPath });
     } else {
-      return await signup(credentials);
+      return await signup({ ...credentials, redirectPath });
     }
   } catch (error) {
     console.log(error);

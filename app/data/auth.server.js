@@ -55,7 +55,7 @@ export async function requireUserSection(request) {
   return userId;
 }
 
-export async function signup({ email, password }) {
+export async function signup({ email, password, redirectPath }) {
   const existingUser = await prisma.user.findFirst({
     where: { email },
   });
@@ -71,10 +71,10 @@ export async function signup({ email, password }) {
     data: { email, password: passwordHash },
   });
 
-  return createUserSession(user.id, "/wallet");
+  return createUserSession(user.id, redirectPath);
 }
 
-export async function login({ email, password }) {
+export async function login({ email, password, redirectPath }) {
   const user = await prisma.user.findFirst({
     where: { email },
   });
@@ -100,5 +100,5 @@ export async function login({ email, password }) {
     };
   }
 
-  return createUserSession(user.id, "/wallet");
+  return createUserSession(user.id, redirectPath);
 }

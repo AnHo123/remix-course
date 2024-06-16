@@ -1,6 +1,7 @@
 import Button from "~/components/button/Button";
 import ExpenseItem, { ExpenseDataType } from "./expense-item/ExpenseItem";
 import { Link, useLoaderData } from "@remix-run/react";
+import RequireLogin from "~/components/require-login/RequireLogin";
 
 interface WalletPageDataType {
   expenses: ExpenseDataType[];
@@ -10,17 +11,7 @@ interface WalletPageDataType {
 export default function WalletPage() {
   const data = useLoaderData() as WalletPageDataType;
 
-  if (!data?.userId)
-    return (
-      <div>
-        <h1 className="text-3xl font-bold">
-          You need to be logged in to view this page
-        </h1>
-        <Link to="/auth?mode=login">
-          <Button>Login Now</Button>
-        </Link>
-      </div>
-    );
+  if (!data?.userId) return <RequireLogin />;
 
   return (
     <div className="flex items-center justify-center">

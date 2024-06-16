@@ -12,6 +12,11 @@ export default function AddExpensePage() {
   return <ExpenseFormModal />;
 }
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  await requireUserSection(request);
+
+  return null;
+}
 export async function action({ request }: ActionFunctionArgs) {
   const userId = await requireUserSection(request);
   const formData = await request.formData();
