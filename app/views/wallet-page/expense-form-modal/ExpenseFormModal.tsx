@@ -2,8 +2,8 @@ import ExpenseForm from "../expense-form/ExpenseForm";
 
 export default function ExpenseFormModal() {
   return (
-    <div className="w-dvw h-dvh fixed top-0 left-0 flex items-center justify-end z-50 bg-black bg-opacity-50">
-      <div className="flex flex-col w-full items-center justify-center">
+    <div className="fixed left-0 top-0 z-50 flex h-dvh w-dvw items-center justify-end bg-black bg-opacity-50">
+      <div className="flex w-full flex-col items-center justify-center">
         <ExpenseForm />
       </div>
     </div>

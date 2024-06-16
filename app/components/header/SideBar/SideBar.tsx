@@ -8,11 +8,11 @@ interface SideBarProps {
 
 export default function SideBar({ data, onClose }: SideBarProps) {
   return (
-    <div className="fixed h-dvh w-screen bg-primary top-0 left-0 flex flex-col">
-      <div onClick={onClose} className="text-white text-2xl self-end pt-4 pr-5">
+    <div className="fixed left-0 top-0 flex h-dvh w-screen flex-col bg-primary">
+      <div onClick={onClose} className="self-end pr-5 pt-4 text-2xl text-white">
         X
       </div>
-      <div className="text-white flex flex-col w-full h-full items-center text-xl justify-start gap-10 pt-20">
+      <div className="flex h-full w-full flex-col items-center justify-start gap-10 pt-20 text-xl text-white">
         {data.map((item, index) => (
           <NavLink to={item.link} key={index} onClick={onClose}>
             {item.name}

@@ -16,8 +16,8 @@ export default function Button({
     <button
       {...buttonProps}
       className={twMerge(
-        "bg-accent-blue hover:bg-[#45a8be] text-white rounded-xl px-5 text-xl py-3",
-        className
+        "rounded-xl bg-accent-blue px-5 py-3 text-xl text-white hover:bg-[#45a8be]",
+        className,
       )}
     >
       {children}

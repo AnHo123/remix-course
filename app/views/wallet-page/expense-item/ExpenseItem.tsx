@@ -28,30 +28,30 @@ export default function ExpenseItem({ data }: ExpensePropsDataType) {
   };
 
   return (
-    <div className="border-2 min-w-80 border-primary h-full rounded-3xl pt-2 pb-6 pr-2 pl-6 w-full max-w-md">
-      <div className="flex items-center justify-end gap-2 mb-2">
-        <Button className="p-2.5 rounded-md" onClick={handleDeleteExpense}>
-          <img src={BinIcon} alt="bin icon" className="w-4 h-auto" />
+    <div className="h-full w-full min-w-80 max-w-md rounded-3xl border-2 border-primary pb-6 pl-6 pr-2 pt-2">
+      <div className="mb-2 flex items-center justify-end gap-2">
+        <Button className="rounded-md p-2.5" onClick={handleDeleteExpense}>
+          <img src={BinIcon} alt="bin icon" className="h-auto w-4" />
         </Button>
         <Link to={`/wallet/${data.id}`}>
-          <Button className="p-2.5 rounded-md">
-            <img src={PencilIcon} alt="bin icon" className="w-4 h-auto" />
+          <Button className="rounded-md p-2.5">
+            <img src={PencilIcon} alt="bin icon" className="h-auto w-4" />
           </Button>
         </Link>
       </div>
-      <div className="font-bold text-2xl text-primary capitalize text-center mb-2">
+      <div className="mb-2 text-center text-2xl font-bold capitalize text-primary">
         {data?.title}
       </div>
-      <div className="text-lg text-dark-grey flex flex-col gap-1">
+      <div className="flex flex-col gap-1 text-lg text-dark-grey">
         <div>
-          <span className="font-bold mr-1">Amount:</span> ${data?.amount}
+          <span className="mr-1 font-bold">Amount:</span> ${data?.amount}
         </div>
         <div>
-          <span className="font-bold mr-1">Date:</span> {date}
+          <span className="mr-1 font-bold">Date:</span> {date}
         </div>
         {data?.note && (
-          <div className="leading-tight line-clamp-2">
-            <span className="font-bold mr-1">Note:</span>
+          <div className="line-clamp-2 leading-tight">
+            <span className="mr-1 font-bold">Note:</span>
             {data.note}
           </div>
         )}

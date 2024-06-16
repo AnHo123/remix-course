@@ -15,7 +15,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export interface AnalyseChartDataType {
@@ -49,7 +49,7 @@ export default function AnalyseChart({ data: dataRaw }: AnalyseChartProps) {
   };
 
   return (
-    <div className="w-full flex items-center justify-center px-4">
+    <div className="flex w-full items-center justify-center px-4">
       <div className="w-full max-w-4xl">
         <Bar options={options} data={data} />
       </div>

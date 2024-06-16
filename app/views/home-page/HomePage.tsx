@@ -7,21 +7,21 @@ export default function HomePage() {
   const data = useLoaderData() as { userId: string | undefined };
 
   return (
-    <div className="w-full flex items-center justify-center flex-col">
-      <img src={Banner} alt="banner" className="w-full h-auto" />
-      <div className="w-11/12 mb-8 mt-6 flex flex-col items-center justify-center lg:mt-12 lg:mb-14">
-        <div className="w-full text-center text-primary font-bold text-2xl uppercase mb-4 italic lg:mb-8 lg:text-3xl">
+    <div className="flex w-full flex-col items-center justify-center">
+      <img src={Banner} alt="banner" className="h-auto w-full" />
+      <div className="mb-8 mt-6 flex w-11/12 flex-col items-center justify-center lg:mb-14 lg:mt-12">
+        <div className="mb-4 w-full text-center text-2xl font-bold uppercase italic text-primary lg:mb-8 lg:text-3xl">
           Let Us Simplify Your Expense Management Journey!
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-10 mb-4 lg:mb-8">
-          <div className="border-2 border-primary rounded-xl flex flex-col items-center justify-center text-center w-full max-w-96">
+        <div className="mb-4 grid grid-cols-1 gap-5 lg:mb-8 lg:grid-cols-3 lg:gap-10">
+          <div className="flex w-full max-w-96 flex-col items-center justify-center rounded-xl border-2 border-primary text-center">
             <img
               src={CardThumbnail}
               alt="card-thumbnail"
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
             />
             <div className="px-3 pb-4 lg:px-5 lg:pb-10 lg:pt-2">
-              <div className="text-accent-yellow text-xl font-bold mb-2.5 lg:text-2xl lg:mb-4">
+              <div className="mb-2.5 text-xl font-bold text-accent-yellow lg:mb-4 lg:text-2xl">
                 STORE
               </div>
               <div>
@@ -31,14 +31,14 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="border-2 border-primary rounded-xl flex flex-col items-center justify-center text-center w-full max-w-96">
+          <div className="flex w-full max-w-96 flex-col items-center justify-center rounded-xl border-2 border-primary text-center">
             <img
               src={CardThumbnail}
               alt="card-thumbnail"
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
             />
             <div className="px-3 pb-4 lg:px-5 lg:pb-10 lg:pt-2">
-              <div className="text-accent-yellow text-xl font-bold mb-2.5 lg:text-2xl lg:mb-4">
+              <div className="mb-2.5 text-xl font-bold text-accent-yellow lg:mb-4 lg:text-2xl">
                 ANALYSE
               </div>
               <div>
@@ -48,14 +48,14 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="border-2 border-primary rounded-xl flex flex-col items-center justify-center text-center w-full max-w-96">
+          <div className="flex w-full max-w-96 flex-col items-center justify-center rounded-xl border-2 border-primary text-center">
             <img
               src={CardThumbnail}
               alt="card-thumbnail"
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
             />
             <div className="px-3 pb-4 lg:px-5 lg:pb-10 lg:pt-2">
-              <div className="text-accent-yellow text-xl font-bold mb-2.5 lg:text-2xl lg:mb-4">
+              <div className="mb-2.5 text-xl font-bold text-accent-yellow lg:mb-4 lg:text-2xl">
                 FREE TRIAL
               </div>
               <div>

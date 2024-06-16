@@ -26,23 +26,23 @@ export default function AuthForm() {
   const isLoginMode = authMode === "login";
 
   return (
-    <div className="w-full flex items-center justify-center my-12 lg:my-20 px-10">
-      <div className="max-w-[30rem] w-full flex flex-col items-center justify-center border-2 rounded-xl border-primary pt-8 pb-4 px-10">
-        <div className="w-10 lg:w-16 mb-3">
+    <div className="my-12 flex w-full items-center justify-center px-10 lg:my-20">
+      <div className="flex w-full max-w-[30rem] flex-col items-center justify-center rounded-xl border-2 border-primary px-10 pb-4 pt-8">
+        <div className="mb-3 w-10 lg:w-16">
           <img
             src={isLoginMode ? LockIcon : UserIcon}
             alt="lock icon"
-            className="w-full h-auto"
+            className="h-auto w-full"
           />
         </div>
-        <div className="text-xl lg:text-3xl font-bold mb-6 lg:mb-14">
+        <div className="mb-6 text-xl font-bold lg:mb-14 lg:text-3xl">
           {isLoginMode ? "Login" : "Register"}
         </div>
         <Form
           method="post"
-          className="flex flex-col justify-center items-center w-full"
+          className="flex w-full flex-col items-center justify-center"
         >
-          <div className="flex flex-col gap-5 w-full text-lg mb-5 lg:mb-10">
+          <div className="mb-5 flex w-full flex-col gap-5 text-lg lg:mb-10">
             <div className="w-full">
               <input
                 className={styles["input"]}
@@ -55,7 +55,7 @@ export default function AuthForm() {
                 maxLength={30}
               />
               {validationErrors?.email && (
-                <div className="text-red-500 font-bold text-sm">
+                <div className="text-sm font-bold text-red-500">
                   {validationErrors.email}
                 </div>
               )}
@@ -72,7 +72,7 @@ export default function AuthForm() {
                 placeholder="Enter your password"
               />
               {validationErrors?.password && (
-                <div className="text-red-500 font-bold text-sm">
+                <div className="text-sm font-bold text-red-500">
                   {validationErrors.password}
                 </div>
               )}
@@ -80,14 +80,14 @@ export default function AuthForm() {
           </div>
           <Button
             type="submit"
-            className="rounded-xl px-5 text-xl py-3 mb-5 lg:mb-10 min-w-32"
+            className="mb-5 min-w-32 rounded-xl px-5 py-3 text-xl lg:mb-10"
             disabled={isSubmitting}
           >
             {isSubmitting
               ? "Authenticating..."
               : isLoginMode
-              ? "Login"
-              : "Register"}
+                ? "Login"
+                : "Register"}
           </Button>
           <div className="text-center">
             {!isLoginMode

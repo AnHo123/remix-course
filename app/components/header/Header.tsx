@@ -30,12 +30,12 @@ export default function Header() {
   const userId = useLoaderData();
 
   return (
-    <header className="bg-light-blue font-bold w-full text-primary flex py-5 items-center justify-center">
-      <div className="w-11/12 flex items-center justify-between">
+    <header className="fixed left-0 top-0 z-50 flex w-full items-center justify-center bg-light-blue py-5 font-bold text-primary">
+      <div className="flex w-11/12 items-center justify-between">
         <NavLink to="/">
-          <img src={Logo} alt="logo" className="w-32 lg:w-40 h-auto" />
+          <img src={Logo} alt="logo" className="h-auto w-32 lg:w-40" />
         </NavLink>
-        <div className="lg:flex hidden items-center justify-center text-3xl gap-12">
+        <div className="hidden items-center justify-center gap-12 text-3xl lg:flex">
           {Mock_Header_Data.map((item, index) => (
             <NavLink to={item.link} key={index}>
               {item.name}
@@ -43,7 +43,7 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           {userId ? (
             <Form method="post" action="/logout" id="logout-form">
               <Button className="min-w-28 lg:min-w-32" type="submit">
@@ -60,7 +60,7 @@ export default function Header() {
             <img
               src={MenuIcon}
               alt="menu"
-              className="w-8 h-8"
+              className="h-8 w-8"
               onClick={() => setOpenSideBar(true)}
             />
             {openSideBar && (

@@ -19,7 +19,7 @@ export default function AnalysePage() {
 
   if (fetcher.state !== "idle")
     return (
-      <div className="min-h-dvh flex items-center justify-center">
+      <div className="flex min-h-dvh items-center justify-center">
         Loading...
       </div>
     );
@@ -40,9 +40,9 @@ export default function AnalysePage() {
     : data?.expenses;
 
   return (
-    <div className="py-8 w-full min-h-[50dvh] lg:min-h-[80dvh] flex items-center justify-start flex-col">
-      <div className="flex px-10 flex-col justify-center items-center gap-6 mb-7 lg:mb-12 lg:gap-8">
-        <div className="font-bold text-2xl text-center lg:text-4xl">
+    <div className="flex min-h-[50dvh] w-full flex-col items-center justify-start py-8 lg:min-h-[80dvh]">
+      <div className="mb-7 flex flex-col items-center justify-center gap-6 px-10 lg:mb-12 lg:gap-8">
+        <div className="text-center text-2xl font-bold lg:text-4xl">
           Annual Expense Overview (Amounts in USD)
         </div>
         <div className="flex items-center justify-center gap-2 text-lg lg:text-2xl">
@@ -51,7 +51,7 @@ export default function AnalysePage() {
             id="year"
             onChange={(e) => onSelectYear(e)}
             value={year}
-            className="border-2 rounded-lg border-primary px-2 py-1 outline-none"
+            className="rounded-lg border-2 border-primary px-2 py-1 outline-none"
           >
             {listYear.map((year) => (
               <option key={year} value={year}>
@@ -61,11 +61,11 @@ export default function AnalysePage() {
           </select>
         </div>
       </div>
-      <div className="w-full flex items-center justify-center">
+      <div className="flex w-full items-center justify-center">
         {expenses?.length > 0 ? (
           <AnalyseChart data={expenses} />
         ) : (
-          <div className="text-center mt-10 border-2 border-primary rounded-md px-10 py-8">
+          <div className="mt-10 rounded-md border-2 border-primary px-10 py-8 text-center">
             <div className="text-3xl font-bold">OOPS!!!</div>
             <div className="text-xl">No data found</div>
           </div>

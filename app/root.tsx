@@ -34,7 +34,9 @@ export default function App() {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="mt-[5.75rem]">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

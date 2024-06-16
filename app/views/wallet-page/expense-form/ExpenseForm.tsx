@@ -40,14 +40,14 @@ export default function ExpenseForm(props: ExpenseFormProps) {
       };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center border-2 rounded-xl bg-white border-primary max-w-[30rem] py-8 px-10">
-      <div className="font-bold text-dark-grey text-2xl mb-5">ADD EXPENSE</div>
+    <div className="flex w-full max-w-[30rem] flex-col items-center justify-center rounded-xl border-2 border-primary bg-white px-10 py-8">
+      <div className="mb-5 text-2xl font-bold text-dark-grey">ADD EXPENSE</div>
       <Form
         ref={formRef}
-        className="w-full flex flex-col justify-center items-end"
+        className="flex w-full flex-col items-end justify-center"
         method={expenseData ? "patch" : "post"}
       >
-        <div className="flex flex-col gap-5 w-full text-lg mb-8">
+        <div className="mb-8 flex w-full flex-col gap-5 text-lg">
           <div className="w-full">
             <div className="w-full">
               <input
@@ -62,7 +62,7 @@ export default function ExpenseForm(props: ExpenseFormProps) {
                 defaultValue={defaultValues.title}
               />
               {validationErrors?.title && (
-                <div className="text-red-500 font-bold text-sm">
+                <div className="text-sm font-bold text-red-500">
                   {validationErrors?.title}
                 </div>
               )}
@@ -81,7 +81,7 @@ export default function ExpenseForm(props: ExpenseFormProps) {
               defaultValue={defaultValues.amount}
             />
             {validationErrors?.amount && (
-              <div className="text-red-500 font-bold text-sm">
+              <div className="text-sm font-bold text-red-500">
                 {validationErrors?.amount}
               </div>
             )}
@@ -98,7 +98,7 @@ export default function ExpenseForm(props: ExpenseFormProps) {
               defaultValue={defaultValues.date}
             />
             {validationErrors?.date && (
-              <div className="text-red-500 font-bold text-sm">
+              <div className="text-sm font-bold text-red-500">
                 {validationErrors?.date}
               </div>
             )}
@@ -120,12 +120,12 @@ export default function ExpenseForm(props: ExpenseFormProps) {
           <Link to="/wallet">
             <Button
               disabled={isSubmitting}
-              className={`rounded-xl px-5 text-xl py-3 ${styles["btn-cancel"]}`}
+              className={`rounded-xl px-5 py-3 text-xl ${styles["btn-cancel"]}`}
             >
               Cancel
             </Button>
           </Link>
-          <Button type="submit" className="rounded-xl px-5 text-xl py-3">
+          <Button type="submit" className="rounded-xl px-5 py-3 text-xl">
             {isSubmitting ? "Submiting..." : "Save"}
           </Button>
         </div>
