@@ -51,6 +51,8 @@ export async function requireUserSection(request) {
   if (!userId) {
     throw redirect("/auth?mode=login");
   }
+
+  return userId;
 }
 
 export async function signup({ email, password }) {

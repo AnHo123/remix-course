@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function addExpense(expenseData) {
+export async function addExpense(expenseData, userId) {
   try {
     return await prisma.expense.create({
       data: {
@@ -10,6 +10,11 @@ export async function addExpense(expenseData) {
         amount: +expenseData.amount,
         note: expenseData.note,
         date: new Date(expenseData.date),
+        User: {
+          connect: {
+            id: userId,
+          },
+        },
       },
     });
   } catch (error) {
@@ -18,9 +23,10 @@ export async function addExpense(expenseData) {
   }
 }
 
-export async function getExpenses() {
+export async function getExpenses(userId) {
   try {
     const expenses = await prisma.expense.findMany({
+      where: { userId },
       orderBy: { date: "desc" },
     });
     return expenses;

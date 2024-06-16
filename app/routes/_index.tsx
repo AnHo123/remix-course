@@ -1,5 +1,6 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { getUserFromSession } from "~/data/auth.server";
+import HomePage from "~/views/home-page/HomePage";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,14 +10,11 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
+  return <HomePage />;
 }
 
-export const loader = async () => {
-  const userId = await getUserFromSession();
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const userId = await getUserFromSession(request);
+
   return { userId };
 };

@@ -16,10 +16,8 @@ export default function Index() {
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const [expenses, userId] = await Promise.all([
-    getExpenses(),
-    getUserFromSession(request),
-  ]);
+  const userId = await getUserFromSession(request);
+  const expenses = userId ? await getExpenses(userId) : [];
 
-  return { expenses: [], userId: userId };
+  return { expenses: expenses, userId: userId };
 }
