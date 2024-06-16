@@ -26,23 +26,23 @@ export default function AuthForm() {
   const isLoginMode = authMode === "login";
 
   return (
-    <div className="w-full flex items-center justify-center mt-20">
+    <div className="w-full flex items-center justify-center my-12 lg:my-20 px-10">
       <div className="max-w-[30rem] w-full flex flex-col items-center justify-center border-2 rounded-xl border-primary pt-8 pb-4 px-10">
-        <div className="w-16 mb-3">
+        <div className="w-10 lg:w-16 mb-3">
           <img
             src={isLoginMode ? LockIcon : UserIcon}
             alt="lock icon"
             className="w-full h-auto"
           />
         </div>
-        <div className="text-3xl font-bold mb-14">
+        <div className="text-xl lg:text-3xl font-bold mb-6 lg:mb-14">
           {isLoginMode ? "Login" : "Register"}
         </div>
         <Form
           method="post"
           className="flex flex-col justify-center items-center w-full"
         >
-          <div className="flex flex-col gap-5 w-full text-lg mb-10">
+          <div className="flex flex-col gap-5 w-full text-lg mb-5 lg:mb-10">
             <div className="w-full">
               <input
                 className={styles["input"]}
@@ -80,7 +80,7 @@ export default function AuthForm() {
           </div>
           <Button
             type="submit"
-            className="rounded-xl px-5 text-xl py-3 mb-10 min-w-32"
+            className="rounded-xl px-5 text-xl py-3 mb-5 lg:mb-10 min-w-32"
             disabled={isSubmitting}
           >
             {isSubmitting
@@ -89,7 +89,7 @@ export default function AuthForm() {
               ? "Login"
               : "Register"}
           </Button>
-          <div>
+          <div className="text-center">
             {!isLoginMode
               ? "Already have an account?"
               : "Don’t have an account?"}{" "}

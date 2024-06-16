@@ -59,11 +59,11 @@ export async function signup({ email, password }) {
   const existingUser = await prisma.user.findFirst({
     where: { email },
   });
-
   if (existingUser) {
     const error = new Error("User already exists.");
     error.statusCode = 422;
-    throw error;
+
+    throw { email: error.message };
   }
 
   const passwordHash = await pkg.hash(password, 12);
@@ -84,7 +84,9 @@ export async function login({ email, password }) {
       "Could not log you in. Please check your email and password."
     );
     error.statusCode = 401;
-    throw error;
+    throw {
+      password: error.message,
+    };
   }
 
   const passwordCorrect = await pkg.compare(password, user.password);
@@ -93,7 +95,9 @@ export async function login({ email, password }) {
       "Could not log you in. Please check your email and password."
     );
     error.statusCode = 401;
-    throw error;
+    throw {
+      password: error.message,
+    };
   }
 
   return createUserSession(user.id, "/wallet");
