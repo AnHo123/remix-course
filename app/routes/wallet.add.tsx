@@ -1,5 +1,6 @@
 import {
   ActionFunctionArgs,
+  HeadersFunction,
   LoaderFunctionArgs,
   redirect,
 } from "@remix-run/node";
@@ -31,3 +32,7 @@ export async function action({ request }: ActionFunctionArgs) {
   await addExpense(expenseData, userId);
   return redirect("/wallet");
 }
+
+export const headers: HeadersFunction = ({ parentHeaders }) => ({
+  "Cache-Control": parentHeaders.get("Cache-Control") || "max-age=3600",
+});

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, redirect } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction, redirect } from "@remix-run/node";
 import { requireUserSection } from "~/data/auth.server";
 import {
   deleteExpense,
@@ -41,3 +41,10 @@ export async function action({ params, request }: LoaderFunctionArgs) {
     return redirect("/wallet");
   }
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  return [
+    { title: data?.title?.toUpperCase() || "Wallet" },
+    { name: "description", content: "Create your wallet now!" },
+  ];
+};

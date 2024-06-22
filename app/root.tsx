@@ -5,14 +5,22 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
 import styles from "./global.css?url";
 import Header from "./components/header/Header";
 import { getUserFromSession } from "./data/auth.server";
 import Footer from "./components/footer/Footer";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export function Layout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
@@ -60,3 +68,10 @@ export const links: LinksFunction = () => [
 export async function loader({ request }: LoaderFunctionArgs) {
   return getUserFromSession(request);
 }
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "RemixExpenses" },
+    { name: "description", content: "Welcome to Remix Expense!" },
+  ];
+};

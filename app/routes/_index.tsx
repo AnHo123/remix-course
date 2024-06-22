@@ -1,11 +1,15 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import type {
+  HeadersFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "@remix-run/node";
 import { getUserFromSession } from "~/data/auth.server";
 import HomePage from "~/views/home-page/HomePage";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Homepage" },
+    { name: "description", content: "Welcome to Remix Expense!" },
   ];
 };
 
@@ -18,3 +22,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
   return { userId };
 };
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "max-age=3600",
+});

@@ -1,7 +1,7 @@
 import { validateCredentials } from "~/data/validation.server";
 import AuthForm from "~/views/auth-page/auth-form/AuthForm";
 import { login, signup } from "~/data/auth.server";
-import { ActionFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 
 interface AuthDataType {
   email: string;
