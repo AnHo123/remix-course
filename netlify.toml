@@ -8,9 +8,8 @@ framework = "vite"
 
 [[redirects]]
 from = "/*"
-to = "/index.html"
+to = "./netlify/functions/server"
 status = 200
-force = false
 
 # Set immutable caching for static files, because they have fingerprinted filenames
 
