@@ -10,8 +10,8 @@ import type {
   LoaderFunctionArgs,
   MetaFunction,
 } from "@remix-run/node";
-import stylesheet from "./tailwind.css";
-import styles from "./global.css";
+import stylesheet from "~/tailwind.css?url";
+import styles from "./global.css?url";
 import Header from "./components/header/Header";
 import { getUserFromSession } from "./data/auth.server";
 import Footer from "./components/footer/Footer";
