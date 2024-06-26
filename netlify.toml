@@ -35,3 +35,8 @@ to = "/index.html"
 status = 200
 force = false
 
+[[redirects]]
+from = "*.js"
+to = "/netlify/functions/server"
+status = 200
+
