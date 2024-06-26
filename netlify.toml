@@ -11,6 +11,14 @@ framework = "vite"
 [[headers]]
 for = "/build/*"
 
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
 [headers.values]
 
 "Cache-Control" = "public, max-age=31560000, immutable"
