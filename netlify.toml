@@ -24,3 +24,8 @@ for = "*.css"
 [headers.values]
 Cache-Control = "max-age=31536000"
 
+[[redirects]]
+from = "/*"
+to = "./netlify/functions/server"
+status = 200
+
