@@ -8,28 +8,3 @@ framework = "vite"
 
 # Set immutable caching for static files, because they have fingerprinted filenames
 
-[[headers]]
-for = "/build/*"
-[headers.values]
-Cache-Control = "public, max-age=300"
-
-[[headers]]
-for = "*.html"
-[headers.values]
-Cache-Control = "no-cache"
-
-[[headers]]
-for = "*.png"
-[headers.values]
-Cache-Control = "max-age=300"
-
-[[headers]]
-for = "*.css"
-[headers.values]
-Cache-Control = "max-age=300"
-
-[[headers]]
-for = "/*"
-status = "304"
-[headers.values]
-Cache-Control = "public, max-age=0"
