@@ -18,7 +18,6 @@ for = "*.html"
 [headers.values]
 Cache-Control = "no-cache"
 
-
 [[headers]]
 for = "*.png"
 [headers.values]
@@ -28,11 +27,6 @@ Cache-Control = "max-age=300"
 for = "*.css"
 [headers.values]
 Cache-Control = "max-age=300"
-
-[[headers]]
-for = "*.js"
-[headers.values]
-Cache-Control = "max-age=0"
 
 [[headers]]
 for = "/*"
