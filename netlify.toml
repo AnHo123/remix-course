@@ -29,11 +29,16 @@ for = "*.css"
 [headers.values]
 Cache-Control = "max-age=31536000"
 
+[[headers]]
+for = "*.js"
+[headers.values]
+Cache-Control = "max-age=0, must-revalidate"
 
-[[redirects]]
-from = "*.js"
- to = "/index.html"
-status = 200
+# Remove or comment out this section if it's not needed
+# [[redirects]]
+# from = "*.js"
+# to = "/index.html"
+# status = 200
 
 
 
