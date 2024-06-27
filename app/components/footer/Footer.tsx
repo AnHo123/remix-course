@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-2 lg:w-1/3 lg:items-start lg:gap-4">
             <div className="text-lg font-bold lg:text-xl">ABOUT US</div>
             <div className="italic text-accent-grey lg:text-lg">
-              At Remix Expanse, we're dedicated to revolutionizing financial
+              At Remix Expanse, we are dedicated to revolutionizing financial
               services. Through innovation and expertise, we empower our clients
               to achieve their goals, redefining possibilities in finance.
             </div>

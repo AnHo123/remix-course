@@ -1,6 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import styles from "./Button.module.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
