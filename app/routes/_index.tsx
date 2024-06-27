@@ -1,8 +1,4 @@
-import type {
-  HeadersFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
-} from "@remix-run/node";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { getUserFromSession } from "~/data/auth.server";
 import HomePage from "~/views/home-page/HomePage";
 
@@ -23,6 +19,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   return { userId };
 };
 
-export const headers: HeadersFunction = () => ({
-  "Cache-Control": "max-age=3600",
-});
+// export const headers: HeadersFunction = () => ({
+//   "Cache-Control": "max-age=3600",
+// });

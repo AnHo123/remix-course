@@ -2,12 +2,7 @@ import WalletPage from "~/views/wallet-page/WalletPage";
 import { getExpenses } from "~/data/expenses.server";
 import { Outlet } from "@remix-run/react";
 import { getUserFromSession } from "~/data/auth.server";
-import {
-  HeadersFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
-  json,
-} from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction, json } from "@remix-run/node";
 
 export default function Index() {
   return (
@@ -37,6 +32,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const headers: HeadersFunction = ({ loaderHeaders }) => ({
-  "Cache-Control": loaderHeaders.get("Cache-Control") || "max-age=3600",
-});
+// export const headers: HeadersFunction = ({ loaderHeaders }) => ({
+//   "Cache-Control": loaderHeaders.get("Cache-Control") || "max-age=3600",
+// });
