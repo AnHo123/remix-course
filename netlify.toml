@@ -13,11 +13,22 @@ for = "/build/*"
 [headers.values]
 Cache-Control = "public, max-age=31560000"
 
+[[headers]]
+for = "*.html"
+[headers.values]
+Cache-Control = "no-cache"
 
-[[redirects]]
-from = "/*"
-to = "./netlify/functions/server"
-status = 200
+
+[[headers]]
+for = "*.png"
+[headers.values]
+Cache-Control = "max-age=31536000"
+
+[[headers]]
+for = "*.css"
+[headers.values]
+Cache-Control = "max-age=31536000"
+
 
 
 
