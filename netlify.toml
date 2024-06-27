@@ -30,7 +30,7 @@ for = "*.css"
 Cache-Control = "max-age=31536000"
 
 [[redirects]]
-for = "*.html"
+for = "*.js"
 to = "./netlify/functions/server"
 status = 200
 
