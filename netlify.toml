@@ -29,13 +29,9 @@ for = "*.css"
 [headers.values]
 Cache-Control = "max-age=31536000"
 
-[[headers]]
-for = "*.js"
-[headers.values]
-Cache-Control = "max-age=31536000, immutable"
 
 [[redirects]]
-from = "/*"
+from = "*.js"
  to = "/index.html"
 status = 200
 
