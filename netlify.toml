@@ -34,11 +34,8 @@ for = "*.js"
 [headers.values]
 Cache-Control = "max-age=0, must-revalidate"
 
-# Remove or comment out this section if it's not needed
-# [[redirects]]
-# from = "*.js"
-# to = "/index.html"
-# status = 200
-
-
-
+[[headers]]
+for = "/*"
+status = "304"
+[headers.values]
+Cache-Control = "public, max-age=0, stale-while-revalidate"
